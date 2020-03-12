@@ -1,5 +1,5 @@
 import 'package:crud3/src/bloc/user_bloc.dart';
-import 'package:crud3/src/model/usuraio.dart';
+
 import 'package:crud3/src/resources/bloc_provider.dart';
 import 'package:crud3/src/ui/user_pague.dart';
 import 'package:flutter/material.dart';

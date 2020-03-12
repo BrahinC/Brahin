@@ -29,7 +29,7 @@ Stream <List<Usuario>> get outUsario => _usuarioController.stream;
   }
   
   //elimianr user 
-    Future<void> eliminarUser(String jobId){
+     eliminarUser(String jobId){
     _repository.eliminarUser(jobId);
   }
   void update (String  n, String r) async {  

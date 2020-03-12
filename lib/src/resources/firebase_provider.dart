@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:crud3/src/model/usuraio.dart';
+
 
 class FirebaseProvider{
 
@@ -9,9 +9,25 @@ FirebaseProvider(){
   _firestore=Firestore.instance;
 }
 
+//tre a todos los usuarios 
 Stream<QuerySnapshot> getUsuario(){
   return _firestore.collection("/usuarios").snapshots();
 }
+
+//trae todas las ofertas del lider , jumbo y unimarc 
+Stream<QuerySnapshot> getOFertasLider(){
+  return _firestore.collection("/ofertas_lider").snapshots();
+}
+
+Stream<QuerySnapshot> getOfertasJumbo(){
+  return _firestore.collection("/oferta_jumbo").snapshots();
+}
+
+Stream<QuerySnapshot> getOfertasUnimarc(){
+  return _firestore.collection("/ofertas_unimarc").snapshots();
+}
+
+
 
 void createUser (String  n, String r) async { await 
   _firestore.collection ( "/usuarios" ) 
@@ -26,7 +42,7 @@ void createUser (String  n, String r) async { await
  
 
 }
-   Future<void> eliminarUser(String jobId){
+   eliminarUser(String jobId){
      _firestore.collection('/usuarios').document(jobId).delete();
   }
 

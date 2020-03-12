@@ -1,7 +1,9 @@
 
+import 'package:crud3/src/bloc/oferta_bloc.dart';
 import 'package:crud3/src/bloc/user_bloc.dart';
 import 'package:crud3/src/model/usuraio.dart';
 import 'package:crud3/src/resources/bloc_provider.dart';
+import 'package:crud3/src/ui/oferta_screm.dart';
 import 'package:crud3/src/ui/registro_page.dart';
 import 'package:flutter/material.dart';
 
@@ -94,8 +96,10 @@ rut: u.rut,
 
 
       ),
+      bottomNavigationBar: appBar(context),
       floatingActionButton: FloatingActionButton(
         child: Icon(Icons.add),
+        
         onPressed: () {
                      Navigator.of(context).push(
       MaterialPageRoute(
@@ -113,5 +117,71 @@ rut: u.rut,
       ),
 
     );
+
+
   }
+
+
+
+}
+
+Widget appBar(BuildContext context) {
+return BottomAppBar(
+      notchMargin: 5.0,
+      shape: CircularNotchedRectangle(),
+      child: Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          botonAction(Icons.shopping_cart, context),
+          botonAction(Icons.map, context),
+          SizedBox(
+            height: 48.0,
+          ),
+          botonAction(Icons.exit_to_app, context),
+          botonAction(Icons.settings, context),
+        ],
+      ),
+    );
+
+}
+
+botonAction(IconData icon, BuildContext context) {
+   return InkWell(
+      child: Padding(
+        padding: const EdgeInsets.all(8.5),
+        child: Icon(icon),
+      ),
+      onTap: () {
+        if (icon == Icons.home) {
+          MaterialPageRoute(
+        builder: (BuildContext context){
+
+           return BlocProvider<UserBloc>(
+        child:UserPage(), 
+        bloc: UserBloc()
+        );
+    
+        }
+      );
+         
+        }
+
+        if (icon == Icons.shopping_cart) {
+                                                               Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (BuildContext context){
+
+           return BlocProvider<OfertaBloc>(
+        child: OfertaScrem(), 
+        bloc: OfertaBloc()
+        );
+    
+        }
+      )
+    );
+          
+        }
+      },
+    );
 }
