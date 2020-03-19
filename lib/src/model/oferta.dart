@@ -15,4 +15,15 @@ class Oferta {
   nombre=snapshot.data["nombre"],
   precio=snapshot.data["precio"],
   tienda=snapshot.data["tienda"];
+  /*
+
+  Oferta({
+  
+    this.nombre,
+    this.tienda,
+    this.precio,
+    this.id
+    
+  });
+  */
 }

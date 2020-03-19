@@ -18,46 +18,32 @@ class OfertaScrem extends StatelessWidget {
         title: Text("oferta"),
       
       ),
-      body:StreamBuilder<List<Oferta>>(
+   
+    body:StreamBuilder <List<Oferta>>(
 
-        stream: bloc.outOferta,
-         builder:(BuildContext ctx,  AsyncSnapshot<List<Oferta>> sn ){
-           
+      stream: bloc.outOferta,
+      builder: (BuildContext ctx, AsyncSnapshot<List<Oferta>> sn){
 
-          
-            if(sn.hasData){
-              return ListView(
-                children: sn.data.map((Oferta o){
-                  if(o!=null){
-                    return Column(
-                    children: <Widget>[
-                      Text(o.nombre),
-                      Text(o.tienda),
-                      Text(o.precio)
-                    ],
-                    
-                  );
-                    
-                  }else{
-                    return Text("cargando");
-                  }
-                  
+        if(sn.hasData){
+         return ListView(
+           children: sn.data.map((Oferta o){
 
-                }).toList()
+             return Column(
+               children: <Widget>[
+                 Text(o.nombre),
+                 Text(o.precio),
+                 Text(o.tienda)
+               ],
+             );
+           }).toList(),
 
-              );
+         );
+        }
+        return Text("error");
+      },
 
-            }
-         
-         
-          
 
-            return Text("error");
-         
-         }
-         
-    
-      ),
+    ),
       bottomNavigationBar: appBar(context),
     );
   }

@@ -168,7 +168,7 @@ botonAction(IconData icon, BuildContext context) {
         }
 
         if (icon == Icons.shopping_cart) {
-                                                               Navigator.of(context).push(
+           Navigator.of(context).push(
       MaterialPageRoute(
         builder: (BuildContext context){
 
